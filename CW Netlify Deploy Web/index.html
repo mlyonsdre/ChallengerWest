@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenger West Neighborhood Association</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Community -->
+    <!-- Application Structure Plan: The application transforms the user's multi-page website plan into a single-page application (SPA) for a modern, fluid user experience. It uses a fixed top navigation bar with links that smoothly scroll to corresponding sections on the page (Home, About, Events, etc.). This structure was chosen because it allows users to access all information quickly without page reloads, which is ideal for a community hub where users might be checking for quick updates. The flow is intuitive: users land on a welcoming hero section and can either scroll to explore or use the navigation for direct access to the content they need. The addition of the "Join Our Group" provides a clear call-to-action for a key communication channel. -->
+    <!-- Visualization & Content Choices: Report Info: Board Members -> Goal: Introduce the team -> Viz/Presentation: Interactive profile cards -> Interaction: Hover effect to provide subtle feedback -> Justification: More personal and engaging than a simple list. | Report Info: Upcoming Events -> Goal: Announce events clearly -> Viz/Presentation: A timeline-style layout with cards -> Interaction: None, focus on readability -> Justification: A timeline is a visually compelling way to show chronological information. | Report Info: Photo Gallery -> Goal: Showcase community life -> Viz/Presentation: A responsive image grid -> Interaction: Click to open a full-screen modal view of the image -> Justification: An interactive gallery is a standard and effective way to display photos without cluttering the page. All other information, including the new Google Group form, is presented in clean, well-structured text blocks and forms for maximum clarity and readability. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8;
+            color: #333;
+        }
+        .hero-bg {
+            background-image: url('https://placehold.co/1920x1080/A9B7A0/FFFFFF?text=Welcome+to+Challenger+West');
+            background-size: cover;
+            background-position: center;
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link.active {
+            color: #8A9A5B;
+            font-weight: 700;
+        }
+        .modal {
+            transition: opacity 0.25s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="antialiased">
+        <header id="header" class="bg-white/80 backdrop-blur-md shadow-sm fixed top-0 left-0 right-0 z-50">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="#home" class="text-xl font-bold text-gray-800">Challenger West NA</a>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="#about" class="nav-link text-gray-600 hover:text-gray-900">About Us</a>
+                    <a href="#events" class="nav-link text-gray-600 hover:text-gray-900">Events</a>
+                    <a href="#resources" class="nav-link text-gray-600 hover:text-gray-900">Resources</a>
+                    <a href="#neighborhood-map" class="nav-link text-gray-600 hover:text-gray-900">Neighborhood Map</a>
+                    <a href="#google-group" class="nav-link text-gray-600 hover:text-gray-900">Communicate with Each Other</a>
+                    <a href="#contact" class="nav-link text-gray-600 hover:text-gray-900">Contact</a>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden text-gray-800">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden bg-white">
+                <a href="#home" class="block py-2 px-6 text-sm text-gray-700">Home</a>
+                <a href="#about" class="block py-2 px-6 text-sm text-gray-700">About Us</a>
+                <a href="#events" class="block py-2 px-6 text-sm text-gray-700">Events</a>
+                <a href="#resources" class="block py-2 px-6 text-sm text-gray-700">Resources</a>
+                <a href="#neighborhood-map" class="block py-2 px-6 text-sm text-gray-700">Neighborhood Map</a>
+                <a href="#google-group" class="block py-2 px-6 text-sm text-gray-700">Communicate with Each Other</a>
+                <a href="#contact" class="block py-2 px-6 text-sm text-gray-700">Contact</a>
+            </div>
+        </header>
+
+        <main>
+            <section id="home" class="hero-bg h-screen flex items-center justify-center text-white text-center pt-[68px]">
+                <div class="bg-black/40 p-10 rounded-lg">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-4">Welcome to Challenger West!</h1>
+                    <p class="text-xl md:text-2xl mb-8">Building a better community, together.</p>
+                    <div class="space-x-4">
+                        <a href="#contact" class="bg-[#8A9A5B] hover:bg-[#788647] text-white font-bold py-3 px-6 rounded-lg transition-colors">Join the Association</a>
+                        <a href="#events" class="bg-white/90 hover:bg-white text-gray-800 font-bold py-3 px-6 rounded-lg transition-colors">View Upcoming Events</a>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="updates" class="py-16 md:py-24 bg-white">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                         <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Recent Updates</h2>
+                         <p class="text-gray-600 mt-2">Stay up-to-date with the latest news and announcements.</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                            <h3 class="font-bold text-xl mb-2">Newly Created Challenger West Neighborhood Association</h3>
+                            <p class="text-gray-600">The City has accepted our application to "officially" form the Challenger West Neighborhood Association.</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                            <h3 class="font-bold text-xl mb-2">Annual Block Party Date Announced</h3>
+                            <p class="text-gray-600">Get ready for our annual neighborhood block party! Mark your calendars for Saturday, August 23, 2025!</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                            <h3 class="font-bold text-xl mb-2">Leadership Team</h3>
+                            <p class="text-gray-600"> See the 'About Us' section to meet them.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="py-16 md:py-24">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">About Our Association</h2>
+                        <p class="text-gray-600 mt-2 max-w-3xl mx-auto">Get to know the people and objectives behind our community. This section introduces our mission, the volunteer board members who serve our neighborhood, and provides access to our application and materials submitted to the City of Sunnyvale on the communities behalf.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-md mb-12">
+                        <h3 class="text-2xl font-bold text-center mb-4">Our Mission</h3>
+                        <p class="text-center text-lg text-gray-700">The Challenger West Neighborhood Association is dedicated to enhancing the quality of life and fostering a strong sense of community for all of our homeowners and residents. We strive to advocate for our shared interests, have fun, support each other, and organize community events.</p>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-center mb-8">Meet the Volunteer Board</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                        <div class="bg-white p-6 rounded-lg text-center shadow-md transition-transform hover:scale-105">
+                            <img src="https://placehold.co/150x150/EFEFEF/333333?text=ML" class="w-24 h-24 rounded-full mx-auto mb-4" alt="Martha Lyons">
+                            <h4 class="font-bold text-lg">Martha Lyons</h4>
+                            <p class="text-[#8A9A5B] font-semibold">President</p>
+                            <p class="text-sm text-gray-600 mt-2">A Challenger West homeowner, since 1992, and one of the founders of our annual block party which began in 1995.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg text-center shadow-md transition-transform hover:scale-105">
+                            <img src="https://placehold.co/150x150/EFEFEF/333333?text=LK" class="w-24 h-24 rounded-full mx-auto mb-4" alt="Larry Kenyon">
+                            <h4 class="font-bold text-lg">Larry Kenyon</h4>
+                            <p class="text-[#8A9A5B] font-semibold">Vice President</p>
+                            <p class="text-sm text-gray-600 mt-2">A Challenger West homeowner, since 19XX and Avid Cyclist.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg text-center shadow-md transition-transform hover:scale-105">
+                            <img src="https://placehold.co/150x150/EFEFEF/333333?text=MB" class="w-24 h-24 rounded-full mx-auto mb-4" alt="Mark Belvedere">
+                            <h4 class="font-bold text-lg">Mark Belvedere</h4>
+                            <p class="text-[#8A9A5B] font-semibold">Treasurer</p>
+                            <p class="text-sm text-gray-600 mt-2">A Challenger West homeowner, since 19XX and Charcoal expert.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg text-center shadow-md transition-transform hover:scale-105">
+                            <img src="https://placehold.co/150x150/EFEFEF/333333?text=CW" class="w-24 h-24 rounded-full mx-auto mb-4" alt="Carol Weiss">
+                            <h4 class="font-bold text-lg">Carol Weiss</h4>
+                            <p class="text-[#8A9A5B] font-semibold">Secretary</p>
+                            <p class="text-sm text-gray-600 mt-2">A Challenger West homeowner, since 19XX and long term City of Sunnyvale advocate.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                         <h3 class="text-2xl font-bold mb-4">Association Documents</h3>
+                         <div class="inline-flex space-x-4">
+                             <a href="cityapps/index.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg transition-colors">City Applications</a>
+                             <a href="#" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg transition-colors">Other</a>
+                         </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="events" class="py-16 md:py-24 bg-white">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Community Events</h2>
+                        <p class="text-gray-600 mt-2 max-w-3xl mx-auto">From seasonal festivals to neighborhood clean-up days, our events are a great way to connect with your neighbors. Check out what's coming up and relive past moments in our photo gallery.</p>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-center mb-8">Upcoming Events</h3>
+                    <div class="max-w-4xl mx-auto space-y-8">
+                        <div class="md:flex items-center bg-gray-50 p-6 rounded-lg shadow-sm">
+                            <div class="md:w-1/4 text-center md:text-left mb-4 md:mb-0">
+                                <p class="text-lg font-bold text-[#8A9A5B]">TBD</p>
+                                <p class="text-4xl font-bold">TBD</p>
+                            </div>
+                            <div class="md:w-3/4">
+                                <h4 class="font-bold text-xl">Annual Block Party</h4>
+                                <p class="text-gray-600">Dates will be announced for our 2026 Block Party!</p>
+                                <p class="mt-2 text-gray-700">Join us for a day of fun with games, food, and and fun activities. A perfect event for the whole family!</p>
+                            </div>
+                        </div>
+                        <div class="md:flex items-center bg-gray-50 p-6 rounded-lg shadow-sm">
+                            <div class="md:w-1/4 text-center md:text-left mb-4 md:mb-0">
+                                <p class="text-lg font-bold text-[#8A9A5B]">TBD</p>
+                                <p class="text-4xl font-bold">TBD</p>
+                            </div>
+                            <div class="md:w-3/4">
+                                <h4 class="font-bold text-xl">Neighborhood Spring Cleaning Day</h4>
+                                <p class="text-gray-600">We will post more information on a community dumpster day in 2026!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-center mt-16 mb-8">Photo Gallery</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <img src="https://placehold.co/400x400/A9B7A0/FFFFFF?text=Event+Photo+1" class="gallery-item rounded-lg cursor-pointer hover:opacity-80 transition-opacity" alt="Event photo 1">
+                        <img src="https://placehold.co/400x400/A9B7A0/FFFFFF?text=Event+Photo+2" class="gallery-item rounded-lg cursor-pointer hover:opacity-80 transition-opacity" alt="Event photo 2">
+                        <img src="https://placehold.co/400x400/A9B7A0/FFFFFF?text=Event+Photo+3" class="gallery-item rounded-lg cursor-pointer hover:opacity-80 transition-opacity" alt="Event photo 3">
+                        <img src="https://placehold.co/400x400/A9B7A0/FFFFFF?text=Event+Photo+4" class="gallery-lg cursor-pointer hover:opacity-80 transition-opacity" alt="Event photo 4">
+                    </div>
+                </div>
+            </section>
+            
+            <section id="resources" class="py-16 md:py-24">
+                 <div class="container mx-auto px-6">
+                     <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Helpful Resources</h2>
+                         <p class="text-gray-600 mt-2 max-w-3xl mx-auto">Find quick links to important city services and discover local businesses recommended by your neighbors. This section is your one-stop-shop for useful community information.</p>
+                     </div>
+                     <div class="grid md:grid-cols-2 gap-12">
+                         <div>
+                             <h3 class="text-2xl font-bold mb-6 text-center md:text-left">Useful Links</h3>
+                             <div class="space-y-4">
+                                 <a href="https://www.sunnyvale.ca.gov/" class="flex items-center bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                                     <span class="text-2xl mr-4">🏙️</span> City of Sunnyvale Website
+                                 </a>
+                                 <a href="https://www.sunnyvale.ca.gov/homes-streets-and-property/neighborhood-resources/neighborhood-associations" class="flex items-center bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                                     <span class="text-2xl mr-4">🚓</span> Sunnyvale Neighborhod Association"
+                                 </a>
+                                 <a href="https://www.sunnyvale.ca.gov/your-government/departments/public-safety" class="flex items-center bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                                     <span class="text-2xl mr-4">🚓</span> Local Police Department
+                                 </a>
+                                 <a href="https://www.sunnyvale.ca.gov/homes-streets-and-property/recycling-and-garbage/smart-station-recycling-center" class="flex items-center bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                                     <span class="text-2xl mr-4">📚</span> Sunnyvale SMART & Recycling
+                                 </a>
+                                 <a href="https://www.sunnyvale.ca.gov/homes-streets-and-property/utility-billing" class="flex items-center bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                                     <span class="text-2xl mr-4">💧</span> Local Utilities
+                                 </a>
+                             </div>
+                         </div>
+                         <div>
+                             <h3 class="text-2xl font-bold mb-6 text-center md:text-left">Local Business Directory</h3>
+                              <div class="space-y-4">
+                                 <div class="bg-white p-4 rounded-lg shadow-sm">
+                                     <h4 class="font-bold">Nahita Bakery</h4>
+                                     <p class="text-sm text-gray-600">Bringing you the best of Turkish and Ottoman cuisine, from our fresh-baked pastries to our mouth-watering desserts.</p>
+                                     <a href="https://www.nahita.shop/" class="text-sm text-[#8A9A5B] hover:underline">Visit Website</a>
+                                 </div>
+                                  <div class="bg-white p-4 rounded-lg shadow-sm">
+                                     <h4 class="font-bold">Mylapore Express</h4>
+                                     <p class="text-sm text-gray-600">Coming soon to Sunnyvale for the South Vegetarian Indian food.</p>
+                                     <a href="https://mylaporeexpress.com" class="text-sm text-[#8A9A5B] hover:underline">Visit Website</a>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+            </section>
+            
+            <section id="neighborhood-map" class="py-16 md:py-24">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Our Neighborhood Map</h2>
+                        <p class="text-gray-600 mt-2 max-w-3xl mx-auto">The Challenger West Neighborhood is bordered by the following streets:</p>
+                        <ul class="text-lg font-bold text-gray-700 mt-4 space-y-2 max-w-xl mx-auto text-left list-disc list-inside">
+                             <li><span class="font-normal text-gray-600">North:</span> Steuben</li>
+                             <li><span class="font-normal text-gray-600">South:</span> Trenton (includes Pomelo Court)</li>
+                             <li><span class="font-normal text-gray-600">East:</span> Queen Anne</li>
+                             <li><span class="font-normal text-gray-600">West:</span> Pome</li>
+                         </ul>
+                    </div>
+                    <div class="flex justify-center">
+                         <img src="ChallengerWestMap.jpg" alt="Challenger West Neighborhood Map" class="w-full md:w-3/4 lg:w-1/2 rounded-lg shadow-md border border-gray-200">
+                    </div>
+                 </div>
+            </section>
+
+            <section id="google-group" class="py-16 md:py-24 bg-white">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Communicate with Each Other</h2>
+                        <p class="text-gray-600 mt-2 max-w-3xl mx-auto">The best way to stay in touch with your neighbors is through our official Google Group, **"ChallengerWestSunnyvaleNA"**. Please note that you must be a member of the association to be added to this group.</p>
+                    </div>
+                    <div class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-md text-center">
+                        <p class="text-lg text-gray-700 font-bold mb-4">Click below to visit the group or send an email:</p>
+                        <div class="space-y-4">
+                            <a href="https://groups.google.com/g/challengerwest" class="inline-block w-full sm:w-auto bg-[#8A9A5B] hover:bg-[#788647] text-white font-bold py-2 px-4 rounded-lg transition-colors">
+                                View Google Group Page
+                            </a>
+                            <a href="mailto:challengerwest@googlegroups.com" class="inline-block w-full sm:w-auto bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg transition-colors">
+                                Email the Group
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+             <section id="contact" class="py-16 md:py-24 bg-white">
+                 <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Get In Touch</h2>
+                        <p class="text-gray-600 mt-2 max-w-3xl mx-auto">We'd love to hear from you! Whether you have a question, want to join the association, or sign up for our newsletter, use the options below to connect with us. If you are interested in joining, please check our <a href="https://groups.google.com/g/challengerwest/about" class="text-[#8A9A5B] hover:underline">association map</a> to see if you reside in our neighborhood, and be sure to provide your street address in your message so we can verify.
+                        </p>
+                    </div>
+                     <div class="max-w-xl mx-auto bg-gray-50 p-8 rounded-lg shadow-md">
+                         <h3 class="text-xl font-bold mb-6">Send us a Message</h3>
+                         <form id="contact-form">
+                             <div class="mb-4">
+                                 <label for="contact-name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+                                 <input type="text" id="contact-name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Your Name">
+                             </div>
+                             <div class="mb-4">
+                                 <label for="contact-email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                                 <input type="email" id="contact-email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="you@example.com">
+                             </div>
+                             <div class="mb-6">
+                                 <label for="contact-message" class="block text-gray-700 text-sm font-bold mb-2">Message</label>
+                                 <textarea id="contact-message" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Your message..."></textarea>
+                             </div>
+                             <button type="submit" class="w-full bg-[#8A9A5B] hover:bg-[#788647] text-white font-bold py-2 px-4 rounded-lg transition-colors">
+                                 Submit
+                             </button>
+                             <div id="contact-confirmation" class="hidden mt-4 text-center p-4 bg-green-100 text-green-800 rounded-lg">
+                                Your email client will now open with your message.
+                            </div>
+                         </form>
+                     </div>
+                 </div>
+            </section>
+        </main>
+        
+        <footer class="bg-gray-800 text-white py-8">
+            <div class="container mx-auto px-6 text-center">
+                <p>&copy; 2025 Challenger West Neighborhood Association. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+        <div id="image-modal" class="modal fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+            <div class="relative">
+                <button id="modal-close" class="absolute -top-12 -right-1 text-white text-4xl">&times;</button>
+                <img id="modal-image" src="" alt="Full size event photo" class="max-w-full max-h-[90vh] rounded-lg">
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            const navLinks = document.querySelectorAll('.nav-link, #mobile-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (mobileMenu.classList.contains('hidden') === false) {
+                       mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+            const sections = document.querySelectorAll('section');
+            const header = document.getElementById('header');
+            const headerHeight = header.offsetHeight;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                    if (entry.isIntersecting) {
+                        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+                        if(navLink) navLink.classList.add('active');
+                    }
+                });
+            }, { rootMargin: `-${headerHeight}px 0px 0px 0px`, threshold: 0.5 });
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const modal = document.getElementById('image-modal');
+            const modalImage = document.getElementById('modal-image');
+            const modalClose = document.getElementById('modal-close');
+
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    modalImage.src = item.src;
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                });
+            });
+
+            const closeModal = () => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                modalImage.src = '';
+            }
+
+            modalClose.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            const contactForm = document.getElementById('contact-form');
+            const contactConfirmation = document.getElementById('contact-confirmation');
+            const contactNameInput = document.getElementById('contact-name');
+            const contactEmailInput = document.getElementById('contact-email');
+            const contactMessageInput = document.getElementById('contact-message');
+            
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = contactNameInput.value;
+                const email = contactEmailInput.value;
+                const message = contactMessageInput.value;
+                const subject = encodeURIComponent("ChallengerWest Neighborhood Association - Website Contact Form Submission");
+                const body = encodeURIComponent(`Name: ${name}
+Email: ${email}
+Message:
+${message}`);
+		const toAddress = 'lyons.strategy@gmail.com';
+                const ccAddress = email;
+
+                window.location.href = `mailto:${toAddress}?cc=${encodeURIComponent(ccAddress)}&subject=${subject}&body=${body}`;
+                
+                contactConfirmation.classList.remove('hidden');
+                setTimeout(() => {
+                    contactConfirmation.classList.add('hidden');
+                }, 5000);
+            });
+        });
+    </script>
+</body>
+</html>

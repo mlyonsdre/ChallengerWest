@@ -1,0 +1,36 @@
+/* ==============================
+   Announcements (CMS)
+   ============================== */
+
+#announcements {
+  margin: 2rem 0;
+}
+
+#announcements h2 {
+  margin-bottom: 1rem;
+}
+
+.announcement {
+  padding: 1rem 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.announcement:last-child {
+  border-bottom: none;
+}
+
+.announcement h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.announcement small {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.announcement div {
+  line-height: 1.5;
+}
