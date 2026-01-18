@@ -6,12 +6,45 @@ media_folder: "img/uploads"
 public_folder: "/img/uploads"
 
 collections:
-  - name: "announcements"
-    label: "Announcements"
-    folder: "content/announcements"
+  - name: "home"
+    label: "Homepage"
+    files:
+      - file: "index.html"
+        label: "Home Content"
+        name: "home_content"
+        fields:
+          - { label: "Hero Headline", name: "hero_headline", widget: "string" }
+          - { label: "Hero Subtext", name: "hero_subtext", widget: "string" }
+
+  - name: "updates"
+    label: "Updates & Announcements"
+    folder: "_content/updates"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Date", name: "date", widget: "date" }
       - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "events"
+    label: "Events"
+    folder: "_content/events"
+    create: true
+    fields:
+      - { label: "Event Name", name: "event_name", widget: "string" }
+      - { label: "Date", name: "date", widget: "date" }
+      - { label: "Details", name: "body", widget: "markdown" }
+
+  - name: "resources"
+    label: "Helpful Links"
+    files:
+      - file: "resources.html"
+        label: "Resources"
+        name: "resources_content"
+        fields:
+          - { label: "Links List", name: "links", widget: "list", fields: 
+              [
+                {label: "Link Label", name: "label", widget: "string"},
+                {label: "URL", name: "url", widget: "string"}
+              ]
+            }
