@@ -83,20 +83,12 @@
                          <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Recent Updates</h2>
                          <p class="text-gray-600 mt-2">Stay up-to-date with the latest news and announcements.</p>
                     </div>
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-                            <h3 class="font-bold text-xl mb-2">Newly Created Challenger West Neighborhood Association</h3>
-                            <p class="text-gray-600">The City has accepted our application to "officially" form the Challenger West Neighborhood Association.</p>
-                        </div>
-                        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-                            <h3 class="font-bold text-xl mb-2">Annual Block Party Date Announced</h3>
-                            <p class="text-gray-600">Get ready for our annual neighborhood block party! Mark your calendars for Saturday, August 23, 2025!</p>
-                        </div>
-                        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-                            <h3 class="font-bold text-xl mb-2">Leadership Team</h3>
-                            <p class="text-gray-600"> See the 'About Us' section to meet them.</p>
-                        </div>
-                    </div>
+
+					<div id="announcements-grid" class="grid md:grid-cols-3 gap-8">
+ 					 <p class="text-gray-500 col-span-3 text-center">
+  			 		 Loading announcements…
+ 					 </p>
+					</div>
                 </div>
             </section>
 
@@ -410,5 +402,50 @@ ${message}`);
             });
         });
     </script>
+	<script>
+  async function loadAnnouncements() {
+    const container = document.getElementById("announcements-grid");
+    if (!container) return;
+
+    try {
+      const response = await fetch("/content/announcements/index.json");
+      if (!response.ok) throw new Error("No announcements found");
+
+      const announcements = await response.json();
+
+      if (!announcements.length) {
+        container.innerHTML = `
+          <p class="text-gray-500 col-span-3 text-center">
+            No announcements yet.
+          </p>`;
+        return;
+      }
+
+      announcements
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, 3); // latest 3
+
+      container.innerHTML = announcements.map(item => `
+        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+          <h3 class="font-bold text-xl mb-2">${item.title}</h3>
+          <p class="text-sm text-gray-500 mb-2">
+            ${new Date(item.date).toLocaleDateString()}
+          </p>
+          <div class="text-gray-600">${item.body}</div>
+        </div>
+      `).join("");
+
+    } catch (err) {
+      container.innerHTML = `
+        <p class="text-red-500 col-span-3 text-center">
+          Unable to load announcements.
+        </p>`;
+      console.error(err);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", loadAnnouncements);
+</script>
 </body>
 </html>
+
