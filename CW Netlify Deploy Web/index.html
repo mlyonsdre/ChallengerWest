@@ -408,7 +408,7 @@ ${message}`);
     if (!container) return;
 
     try {
-      const response = await fetch("/content/announcements/index.json");
+      const response = await fetch("/public/content/announcements/index.json");
       if (!response.ok) throw new Error("No announcements found");
 
       const announcements = await response.json();
@@ -448,4 +448,5 @@ ${message}`);
 </script>
 </body>
 </html>
+
 
